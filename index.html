@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hangman!</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  </head>
+  
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <div class="jumbotron">
+            <h2><strong><center>You have <span id="remaining2"></span> chances to win the game....please start by making  your first choice</center></strong></h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <center><h1> Previous Choices <span id="choices"><strong> </strong></span></h1>
+            <center><h1> Letters <span id="userguess"></span></h1></center>
+        </div>
+        <div class="row">
+        <div class="col-12">
+          <center><h1> Remaining Guesses <span id="remaining"></span></h1></center>
+        </div>
+        <br></br>
+        <h1> Wins <span id="win"><strong></strong></span></h1>
+        <h1> Loses <span id="loss"><strong></strong></span></h1>
+
+    </div>
+          
+
+    <!-- We have to put this at the end of our document to ensure the user-text
+         span exists when we try to access it. -->
+    <script type="text/javascript">
+var computerChoice = ['o', 's', 't', 'e', 'r', 'i', 'o', 'h'];
+    var tracker = 1;
+    var correct = [];
+    var count = 15;
+    var userText = document.getElementById("choices");
+    var wins1 = document.getElementById("win");
+    var incorrect = [];
+
+
+    for (p=0; p<computerChoice.length; p++){
+      correct[p] = ' _ ';
+      
+    }
+
+
+document.getElementById("userguess").innerHTML = correct;
+document.getElementById("choices").innerHTML = incorrect;
+      document.onkeyup = function(event) {
+      
+
+
+        // var wins = 40;
+        
+     
+      userText.textContent = event.key;
+      
+      
+        
+        
+         
+        for (j=0; j <=computerChoice.length; j++){
+          
+         for (i=0; i<computerChoice.length; i++){
+            
+            
+             if (userText.textContent == computerChoice[i]){
+              correct[i] = userText.textContent;
+            }
+
+
+              
+            else {};
+            
+            
+          }
+        
+          if (userText.textContent === computerChoice[j]){
+
+
+
+
+
+            console.log("correct");
+            correct[j] = userText.textContent;
+            tracker == tracker ++;
+            console.log(tracker);
+            j = 20;  
+            
+    document.getElementById("userguess").innerHTML = correct;
+
+          
+
+          if (tracker == computerChoice.length){
+            alert("you win");
+            wins1.textContent = 1;
+
+
+          }
+          
+          } else if (j === computerChoice.length){
+            console.log("wrong");
+            count == count--;
+            incorrect[j] = userText.textContent;
+            document.getElementById("remaining").innerHTML=count; 
+            document.getElementById("remaining2").innerHTML=count;
+           
+            
+          }
+
+
+          if (count == 0){
+            alert("game over");
+            loss.textContent = 1;
+
+          }
+          
+        } 
+           
+
+          
+
+        
+
+     };
+
+
+
+      // Let's start by grabbing a reference to the <span> below.
+     
+
+      // Next, we give JavaScript a function to execute when onkeyup event fires.
+    </script>
+    </body>
+    </html>
+
